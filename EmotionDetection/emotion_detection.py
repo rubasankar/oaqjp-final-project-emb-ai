@@ -17,7 +17,7 @@ def emotion_detector(text_to_analyse):
     formatted_response = json.loads(response.text)
     if response.status_code == 200:
         return emotion_predictor(formatted_response)
-    elif response.status_code == 400:
+    elif response.status_code == 500:
         formatted_response = {
                             'anger': None,
                             'disgust': None, 

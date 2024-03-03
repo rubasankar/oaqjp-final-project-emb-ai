@@ -16,9 +16,11 @@ def send_detector():
         score and dominant emotion based on scores for the provided text.
     """
     text_to_detect = request.args.get('textToAnalyze')
+    if text_to_detect is None or text_to_detect == "":
+        return "Invalid text! Please try again!."
     response = emotion_detector(text_to_detect)
     if response['dominant_emotion'] is None:
-        return "Invallid text! Please try again!."
+        return "Invalid text! Please try again!."
     return (f"For the given statement, the system response is 'anger': "
         f"{response['anger']}, 'disgust': {response['disgust']}, 'fear': "
         f"{response['fear']}, 'joy': {response['joy']} and 'sadness': "
